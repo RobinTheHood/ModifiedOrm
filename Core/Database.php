@@ -6,23 +6,26 @@ use RobinTheHood\ModifiedOrm\Core\Debug;
 
 class Database
 {
-    public static function error()
+    public static function error($sql)
     {
         global $db_link;
-        Debug::out(mysqli_error($db_link));
+        $error = mysqli_error($db_link);
+        if ($error) {
+            Debug::out($error . ' in ' . $sql);
+        }
     }
 
     public static function execute($sql)
     {
         $query = xtc_db_query($sql);
-        self::error();
+        self::error($sql);
     }
 
     public static function getRowFromSql($sql)
     {
         $query = xtc_db_query($sql);
 
-        self::error();
+        self::error($sql);
         $row = xtc_db_fetch_array($query);
         return $row;
     }
@@ -30,7 +33,7 @@ class Database
     public static function getRowsFromSql($sql)
     {
         $query = xtc_db_query($sql);
-        self::error();
+        self::error($sql);
 
         $rows = array();
         while($row = xtc_db_fetch_array($query)) {
@@ -89,7 +92,7 @@ class Database
     {
         $objs = array();
         foreach($rows as $row) {
-            $obj = self::rowToObj($row, $repo, $mapping);
+            $obj = self::rowToObj($row, $repo);
             if ($obj) {
                 $objs[] = $obj;
             }
@@ -111,5 +114,12 @@ class Database
             return $row;
         }
         return null;
+    }
+
+    public static function getNextId($tableName, $columnName)
+    {
+        $sql = "SELECT $columnName FROM $tableName ORDER BY $columnName DESC LIMIT 1";
+        $row = self::getRowFromSql($sql);
+        return ++$row[$columnName];
     }
 }

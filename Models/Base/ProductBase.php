@@ -39,7 +39,7 @@ class ProductBase
     protected $template;
     protected $optionTemplate;
     protected $manufacturerId;
-    protected $manufacturersModel;
+    protected $manufacturerModel;
     protected $ordered;
     protected $fsk18;
     protected $vpe;
@@ -163,9 +163,9 @@ class ProductBase
         return $this->manufacturerId;
     }
 
-    public function getManufacturersModel()
+    public function getManufacturerModel()
     {
-        return $this->manufacturersModel;
+        return $this->manufacturerModel;
     }
 
     public function getOrdered()
@@ -319,9 +319,9 @@ class ProductBase
         $this->manufacturerId = $manufacturerId;
     }
 
-    public function setManufacturersModel($manufacturersModel)
+    public function setManufacturerModel($manufacturerModel)
     {
-        $this->manufacturersModel = $manufacturersModel;
+        $this->manufacturerModel = $manufacturerModel;
     }
 
     public function setOrdered($ordered)

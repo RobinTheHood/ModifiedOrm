@@ -19,7 +19,7 @@ class ProductDescriptionBase
     protected $metaDescription;
     protected $metaKeywords;
     protected $url;
-    protected $viewd;
+    protected $viewed;
     protected $orderDescription;
 
     protected $key;
@@ -88,7 +88,7 @@ class ProductDescriptionBase
     {
         return $this->key;
     }
-    
+
     public function setProductId($productId)
     {
         $this->productId = $productId;

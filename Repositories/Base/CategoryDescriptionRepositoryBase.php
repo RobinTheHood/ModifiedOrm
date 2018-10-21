@@ -40,6 +40,17 @@ class CategoryDescriptionRepositoryBase
         return $obj;
     }
 
+    public function getAllByName($name, $languageId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE categories_name = '$name' AND language_id = '$languageId'";
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        foreach($objs as $obj) {
+            $obj->setKey($obj->getCategoryId(), $obj->getLanguageId());
+        }
+        return $objs;
+    }
+
     public function insert($obj)
     {
         $row = Database::objToRow($obj, $this);

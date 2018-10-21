@@ -36,6 +36,14 @@ class ManufacturerRepositoryBase
         return $obj;
     }
 
+    public function getAllByName($name)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE manufacturers_name = '$name' ";
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        return $objs;
+    }
+
     public function insert($obj)
     {
         $row = Database::objToRow($obj, $this);

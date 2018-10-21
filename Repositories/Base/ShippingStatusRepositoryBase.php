@@ -37,8 +37,23 @@ class ShippingStatusRepositoryBase
         return $obj;
     }
 
+    public function getAllByName($name, $languageId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE shipping_status_name = '$name' and language_id = '$languageId'";
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        foreach($objs as $obj) {
+            $obj->setKey($obj->getShippingStatusId(), $obj->getLanguageId());
+        }
+        return $objs;
+    }
+
     public function insert($obj)
     {
+        if ($obj->getShippingStatusId() >= 0) {
+            $id = Database::getNextId($this->tableName, 'shipping_status_id');
+            $obj->setShippingStatusId($id);
+        }
         $row = Database::objToRow($obj, $this);
         $sql = Database::createInsertSql($this->tableName, $row);
         $obj->setKey($obj->getShippingStatusId(), $obj->getLanguageId());

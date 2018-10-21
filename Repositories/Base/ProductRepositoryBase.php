@@ -34,7 +34,7 @@ class ProductRepositoryBase
         'template' => 'product_template',
         'optionTemplate' => 'options_template',
         'manufacturerId' => 'manufacturers_id',
-        'manufacturersModel' => 'products_manufacturers_model',
+        'manufacturerModel' => 'products_manufacturers_model',
         'ordered' => 'products_ordered',
         'fsk18' => 'products_fsk18',
         'vpe' => 'products_vpe',
