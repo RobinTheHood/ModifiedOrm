@@ -1,8 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
-require_once __DIR__ . '/../../Repositories/CategoryRepository.php';
-require_once __DIR__ . '/../../Repositories/CategoryDescriptionRepository.php';
 use RobinTheHood\ModifiedOrm\Repositories\CategoryRepository;
 use RobinTheHood\ModifiedOrm\Repositories\CategoryDescriptionRepository;
 

@@ -1,12 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
-require_once __DIR__ . '/../../Repositories/ProductDescriptionRepository.php';
-require_once __DIR__ . '/../../Repositories/ProductVpeRepository.php';
-require_once __DIR__ . '/../../Repositories/ProductToCategoryRepository.php';
-require_once __DIR__ . '/../../Repositories/PersonalOfferRepository.php';
-require_once __DIR__ . '/../../Repositories/ManufacturerRepository.php';
-require_once __DIR__ . '/../../Repositories/ShippingStatusRepository.php';
 use RobinTheHood\ModifiedOrm\Repositories\ProductDescriptionRepository;
 use RobinTheHood\ModifiedOrm\Repositories\ProductVpeRepository;
 use RobinTheHood\ModifiedOrm\Repositories\ProductToCategoryRepository;

@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/ShippingStatus.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\ShippingStatus;
 
@@ -39,6 +36,7 @@ class ShippingStatusRepositoryBase
 
     public function getAllByName($name, $languageId)
     {
+        $name = Database::escape($name);
         $sql = "SELECT * FROM " . $this->tableName . " WHERE shipping_status_name = '$name' and language_id = '$languageId'";
         $rows = Database::getRowsFromSql($sql);
         $objs = Database::rowsToObjs($rows, $this);

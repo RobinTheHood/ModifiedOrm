@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/ProductTagValue.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\ProductTagValue;
 
@@ -67,6 +64,8 @@ class ProductTagValueRepositoryBase
 
     public function getAllByName($name, $languageId)
     {
+        $name = Database::escape($name);
+
         $sql = "SELECT * FROM " . $this->tableName . " WHERE
             values_name = '$name'
             AND languages_id = '$languageId'

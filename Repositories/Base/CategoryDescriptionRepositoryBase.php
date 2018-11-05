@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/CategoryDescription.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\CategoryDescription;
 
@@ -42,6 +39,7 @@ class CategoryDescriptionRepositoryBase
 
     public function getAllByName($name, $languageId)
     {
+        $name = Database::escape($name);
         $sql = "SELECT * FROM " . $this->tableName . " WHERE categories_name = '$name' AND language_id = '$languageId'";
         $rows = Database::getRowsFromSql($sql);
         $objs = Database::rowsToObjs($rows, $this);

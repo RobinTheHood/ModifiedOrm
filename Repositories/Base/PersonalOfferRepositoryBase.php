@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/PersonalOffer.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\PersonalOffer;
 

@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/Product.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\Product;
 
@@ -60,6 +57,15 @@ class ProductRepositoryBase
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
         return $obj;
+    }
+
+    public function getAllByModel($model)
+    {
+        $name = Database::escape($model);
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE products_model = '$model'";
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        return $objs;
     }
 
     public function insert($obj)

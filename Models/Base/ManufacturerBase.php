@@ -1,7 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
-//require_once __DIR__ . '/../../Repositories/ProductRepository.php';
 //use RobinTheHood\ModifiedOrm\Repositories\ProductRepository;
 
 class ManufacturerBase

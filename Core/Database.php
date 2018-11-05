@@ -1,7 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Core;
 
-require_once __DIR__ . '/Debug.php';
 use RobinTheHood\ModifiedOrm\Core\Debug;
 
 class Database
@@ -13,6 +12,13 @@ class Database
         if ($error) {
             Debug::out($error . ' in ' . $sql);
         }
+    }
+
+    public static function escape($value)
+    {
+        global $db_link;
+        $value = mysqli_real_escape_string($db_link, $value);
+        return $value;
     }
 
     public static function execute($sql)
@@ -47,7 +53,8 @@ class Database
         $size = count($row);
         foreach($row as $columnName => $columnValue) {
             $columnNames .= $columnName;
-            $columnValues .= "'" . $columnValue . "'";
+            $value = self::escape($columnValue);
+            $columnValues .= "'" . $value . "'";
 
             if (++$count < $size) {
                 $columnNames .= ', ';
@@ -63,7 +70,8 @@ class Database
     {
         $size = count($row);
         foreach($row as $columnName => $columnValue) {
-            $set .= $columnName . "='" . $columnValue . "'";
+            $value = self::escape($columnValue);
+            $set .= $columnName . "='" . $value . "'";
             if (++$count < $size) {
                 $set .= ', ';
             }

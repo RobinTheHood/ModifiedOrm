@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
-// require_once __DIR__ . '/../../Repositories/ProductRepository.php';
-// require_once __DIR__ . '/../../Repositories/CategoryRepository.php';
-//
 // use RobinTheHood\ModifiedOrm\Repositories\ProductRepository;
 // use RobinTheHood\ModifiedOrm\Repositories\CategoryRepository;
 

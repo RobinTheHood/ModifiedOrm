@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/Manufacturer.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\Manufacturer;
 
@@ -38,6 +35,7 @@ class ManufacturerRepositoryBase
 
     public function getAllByName($name)
     {
+        $name = Database::escape($name);
         $sql = "SELECT * FROM " . $this->tableName . " WHERE manufacturers_name = '$name' ";
         $rows = Database::getRowsFromSql($sql);
         $objs = Database::rowsToObjs($rows, $this);

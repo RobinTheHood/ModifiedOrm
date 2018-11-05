@@ -1,9 +1,6 @@
 <?php
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
-require_once __DIR__ . '/../../Core/Database.php';
-require_once __DIR__ . '/../../Models/Category.php';
-
 use RobinTheHood\ModifiedOrm\Core\Database;
 use RobinTheHood\ModifiedOrm\Models\Category;
 
@@ -47,14 +44,22 @@ class CategoryRepositoryBase
         return $obj;
     }
 
-    public function insert($obj)
+    public function insert($obj, $forceKey)
     {
         $row = Database::objToRow($obj, $this);
-        unset($row['categories_id']);
+        if (!$forceKey) {
+            unset($row['categories_id']);
+        }
         $sql = Database::createInsertSql($this->tableName, $row);
         Database::execute($sql);
-        $id = xtc_db_insert_id();
-        $obj->setId($id);
+
+        if (!$forceKey) {
+            $id = xtc_db_insert_id();
+            $obj->setId($id);
+        } else {
+            $id = $row['categories_id'];
+        }
+        
         return $id;
     }
 
