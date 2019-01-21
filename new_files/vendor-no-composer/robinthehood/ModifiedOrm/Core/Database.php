@@ -17,7 +17,11 @@ class Database
     public static function escape($value)
     {
         global $db_link;
-        $value = mysqli_real_escape_string($db_link, $value);
+        if (DB_MYSQL_TYPE == 'mysql') {
+            $value = mysql_real_escape_string($value, $db_link);
+        } else {
+            $value = mysqli_real_escape_string($db_link, $value);
+        }
         return $value;
     }
 
