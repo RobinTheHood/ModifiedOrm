@@ -8,7 +8,13 @@ class Database
     public static function error($sql)
     {
         global $db_link;
-        $error = mysqli_error($db_link);
+
+        if (DB_MYSQL_TYPE == 'mysql') {
+            $error = mysql_error($db_link);
+        } else {
+            $error = mysqli_error($db_link);
+        }
+
         if ($error) {
             Debug::out($error . ' in ' . $sql);
         }
