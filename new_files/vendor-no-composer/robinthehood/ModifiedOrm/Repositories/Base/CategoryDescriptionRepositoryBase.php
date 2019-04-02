@@ -33,7 +33,9 @@ class CategoryDescriptionRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE categories_id = '$categoryId' AND language_id = '$languageId'";
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
-        $obj->setKey($obj->getCategoryId(), $obj->getLanguageId());
+        if ($obj) {
+            $obj->setKey($obj->getCategoryId(), $obj->getLanguageId());
+        }
         return $obj;
     }
 

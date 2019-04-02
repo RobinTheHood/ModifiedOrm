@@ -34,7 +34,9 @@ class ManufacturerInfoRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE manufacturers_id = '$manufacturerId' AND languages_id = '$languageId'";
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
-        $obj->setKey($obj->getManufacturerId(), $obj->getLanguageId());
+        if ($obj) {
+            $obj->setKey($obj->getManufacturerId(), $obj->getLanguageId());
+        }
         return $obj;
     }
 

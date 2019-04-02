@@ -37,7 +37,9 @@ class ProductDescriptionRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE products_id = '$productId' and language_id = '$languageId'";
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
-        $obj->setKey($obj->getProductId(), $obj->getLanguageId());
+        if ($obj) {
+            $obj->setKey($obj->getProductId(), $obj->getLanguageId());
+        }
         return $obj;
     }
 

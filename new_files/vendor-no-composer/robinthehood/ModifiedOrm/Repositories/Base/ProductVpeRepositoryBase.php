@@ -28,7 +28,9 @@ class ProductVpeRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE products_vpe_id = '$productVpeId' and language_id = '$languageId'";
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
-        $obj->setKey($obj->getProductVpeId(), $obj->getLanguageId());
+        if ($obj) {
+            $obj->setKey($obj->getProductVpeId(), $obj->getLanguageId());
+        }
         return $obj;
     }
 

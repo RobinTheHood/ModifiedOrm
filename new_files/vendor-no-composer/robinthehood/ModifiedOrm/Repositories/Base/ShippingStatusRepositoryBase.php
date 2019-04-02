@@ -30,7 +30,9 @@ class ShippingStatusRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE shipping_status_id = '$shippingStatusId' and language_id = '$languageId'";
         $row = Database::getRowFromSql($sql);
         $obj = Database::rowToObj($row, $this);
-        $obj->setKey($obj->getShippingStatusId(), $obj->getLanguageId());
+        if ($obj) {
+            $obj->setKey($obj->getShippingStatusId(), $obj->getLanguageId());
+        }
         return $obj;
     }
 
