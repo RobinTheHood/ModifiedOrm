@@ -48,6 +48,10 @@ class ProductVpeRepositoryBase
 
     public function insert($obj)
     {
+        if (!$obj->getProductVpeId()) {
+            $obj->setProductVpeId($this->getLastId() + 1);
+        }
+
         $row = Database::objToRow($obj, $this);
         $sql = Database::createInsertSql($this->tableName, $row);
         $obj->setKey($obj->getProductVpeId(), $obj->getLanguageId());
@@ -70,5 +74,12 @@ class ProductVpeRepositoryBase
         $where = 'products_vpe_id=' . $key['productVpeId'] . ' and language_id=' . $key['languageId'];
         $sql = "DELETE FROM " . $this->tableName . " WHERE $where";
         Database::execute($sql);
+    }
+
+    public function getLastId()
+    {
+        $sql = "SELECT products_vpe_id FROM $this->tableName ORDER BY products_vpe_id DESC LIMIT 1";
+        $row = Database::getRowFromSql($sql);
+        return $row['products_vpe_id'];
     }
 }
