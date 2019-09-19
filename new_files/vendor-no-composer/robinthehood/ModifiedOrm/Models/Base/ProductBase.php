@@ -7,6 +7,7 @@ use RobinTheHood\ModifiedOrm\Repositories\ProductToCategoryRepository;
 use RobinTheHood\ModifiedOrm\Repositories\PersonalOfferRepository;
 use RobinTheHood\ModifiedOrm\Repositories\ManufacturerRepository;
 use RobinTheHood\ModifiedOrm\Repositories\ShippingStatusRepository;
+use RobinTheHood\ModifiedOrm\Repositories\ProductAttributeRepository;
 
 class ProductBase
 {
@@ -394,5 +395,12 @@ class ProductBase
         $repo = new PersonalOfferRepository();
         $personalOffers = $repo->getByCustomerStatusId($this->id, $customerStatusId);
         return $personalOffers;
+    }
+
+    public function getProductAttributes()
+    {
+        $repo = new ProductAttributeRepository();
+        $productAttributes = $repo->getAllByProductId($this->id);
+        return $productAttributes;
     }
 }
