@@ -3,9 +3,21 @@
     "archiveName": "robinthehood/modified-orm",
     "sourceDir": "new_files",
     "version": "auto",
+
     "shortDescription": "Kurzbeschreibung",
     "description": "ORM für Modified",
     "developer": "Robin Wieschendorf",
+
     "developerWebsite": "https://www.sumw.de",
-    "website": "https://www.sumw.de"
+    "website": "https://www.sumw.de",
+
+    "category": "library",
+    "price": "free",
+
+    "modifiedCompatibility": [
+        "2.0.3.0",
+        "2.0.4.0",
+        "2.0.4.1",
+        "2.0.4.2"
+    ]
 }
