@@ -57,6 +57,17 @@ class ProductTagRepositoryBase
         return $obj;
     }
 
+    public function getAllByProductId($productId)
+    {
+        $sql = "SELECT * FROM " . $this->tableName . " WHERE products_id = '$productId'";
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        foreach($objs as $obj) {
+            $this->setKey($obj);
+        }
+        return $objs;
+    }
+
     public function insert($obj)
     {
         $row = Database::objToRow($obj, $this);
