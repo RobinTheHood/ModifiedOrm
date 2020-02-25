@@ -68,7 +68,7 @@ class ProductTagRepositoryBase
     public function update($obj)
     {
         $row = Database::objToRow($obj, $this);
-        $where = $this->getKeyWhere();
+        $where = $this->getKeyWhere($obj);
         $sql = Database::createUpdateSql($this->tableName, $row, $where);
         $this->setKey($obj);
         Database::execute($sql);
@@ -76,7 +76,7 @@ class ProductTagRepositoryBase
 
     public function delete($obj)
     {
-        $where = $this->getKeyWhere();
+        $where = $this->getKeyWhere($obj);
         $sql = "DELETE FROM " . $this->tableName . " WHERE $where";
         Database::execute($sql);
     }
