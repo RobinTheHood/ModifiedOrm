@@ -59,6 +59,14 @@ class ProductRepositoryBase
         return $obj;
     }
 
+    public function getAll()
+    {
+        $sql = "SELECT * FROM " . $this->tableName;
+        $rows = Database::getRowsFromSql($sql);
+        $objs = Database::rowsToObjs($rows, $this);
+        return $objs;
+    }
+
     public function getAllByModel($model)
     {
         $name = Database::escape($model);
