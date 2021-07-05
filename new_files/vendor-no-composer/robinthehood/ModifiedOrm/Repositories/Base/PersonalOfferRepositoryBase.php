@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
 use RobinTheHood\ModifiedOrm\Core\Database;

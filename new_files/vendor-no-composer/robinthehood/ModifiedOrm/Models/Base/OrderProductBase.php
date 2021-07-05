@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 class OrderProductBase

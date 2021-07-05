@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
 use RobinTheHood\ModifiedOrm\Core\Database;
@@ -42,7 +43,7 @@ class ShippingStatusRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE shipping_status_name = '$name' and language_id = '$languageId'";
         $rows = Database::getRowsFromSql($sql);
         $objs = Database::rowsToObjs($rows, $this);
-        foreach($objs as $obj) {
+        foreach ($objs as $obj) {
             $obj->setKey($obj->getShippingStatusId(), $obj->getLanguageId());
         }
         return $objs;

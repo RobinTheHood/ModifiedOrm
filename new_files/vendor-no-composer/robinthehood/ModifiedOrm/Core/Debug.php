@@ -1,7 +1,9 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Core;
 
-class Debug {
+class Debug
+{
     public static function out($value, $verbose = true)
     {
         if ($verbose) {

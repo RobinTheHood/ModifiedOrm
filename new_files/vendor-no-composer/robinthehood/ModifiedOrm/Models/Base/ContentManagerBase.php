@@ -1,6 +1,6 @@
 <?php
-namespace RobinTheHood\ModifiedOrm\Models\Base;
 
+namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 class ContentManagerBase
 {
@@ -248,5 +248,4 @@ class ContentManagerBase
     {
         $this->lastModified = $lastModified;
     }
-
 }

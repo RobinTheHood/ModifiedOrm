@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
 use RobinTheHood\ModifiedOrm\Core\Database;
@@ -27,7 +28,7 @@ class ProductToCategoryRepositoryBase
         $sql = "SELECT * FROM " . $this->tableName . " WHERE products_id = '$productId'";
         $rows = Database::getRowsFromSql($sql);
         $objs = Database::rowsToObjs($rows, $this);
-        foreach($objs as $obj) {
+        foreach ($objs as $obj) {
             $obj->setKey($obj->getProductId(), $obj->getCategoryId());
         }
         return $objs;

@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Repositories\Base;
 
 use RobinTheHood\ModifiedOrm\Core\Database;
@@ -59,7 +60,7 @@ class CategoryRepositoryBase
         } else {
             $id = $row['categories_id'];
         }
-        
+
         return $id;
     }
 

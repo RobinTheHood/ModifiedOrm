@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 //use RobinTheHood\ModifiedOrm\Repositories\ProductRepository;

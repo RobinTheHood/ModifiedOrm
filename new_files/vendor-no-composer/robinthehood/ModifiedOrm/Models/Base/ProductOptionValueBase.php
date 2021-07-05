@@ -1,6 +1,6 @@
 <?php
-namespace RobinTheHood\ModifiedOrm\Models\Base;
 
+namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 class ProductOptionValueBase
 {

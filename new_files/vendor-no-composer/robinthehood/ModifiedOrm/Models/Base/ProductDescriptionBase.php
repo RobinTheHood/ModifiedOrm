@@ -1,7 +1,9 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 use RobinTheHood\ModifiedOrm\Repositories\ProductRepository;
+
 //use RobinTheHood\ModifiedOrm\Repositories\LanguageRepository;
 
 class ProductDescriptionBase

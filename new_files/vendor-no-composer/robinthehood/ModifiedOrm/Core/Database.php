@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Core;
 
 use RobinTheHood\ModifiedOrm\Core\Debug;
@@ -52,7 +53,7 @@ class Database
         self::error($sql);
 
         $rows = array();
-        while($row = xtc_db_fetch_array($query)) {
+        while ($row = xtc_db_fetch_array($query)) {
             $rows[] = $row;
         }
         return $rows;
@@ -61,7 +62,7 @@ class Database
     public static function createInsertSql($tableName, $row)
     {
         $size = count($row);
-        foreach($row as $columnName => $columnValue) {
+        foreach ($row as $columnName => $columnValue) {
             $columnNames .= $columnName;
             $value = self::escape($columnValue);
             $columnValues .= "'" . $value . "'";
@@ -79,7 +80,7 @@ class Database
     public static function createUpdateSql($tableName, $row, $where)
     {
         $size = count($row);
-        foreach($row as $columnName => $columnValue) {
+        foreach ($row as $columnName => $columnValue) {
             $value = self::escape($columnValue);
             $set .= $columnName . "='" . $value . "'";
             if (++$count < $size) {
@@ -96,7 +97,7 @@ class Database
         if ($row) {
             $mapping = $repo->getMapping();
             $obj = $repo->createObj();
-            foreach($mapping as $key => $value) {
+            foreach ($mapping as $key => $value) {
                 $methodName = 'set' . ucfirst($key);
                 $columnName = $value;
                 $obj->$methodName($row[$columnName]);
@@ -109,7 +110,7 @@ class Database
     public static function rowsToObjs($rows, $repo)
     {
         $objs = array();
-        foreach($rows as $row) {
+        foreach ($rows as $row) {
             $obj = self::rowToObj($row, $repo);
             if ($obj) {
                 $objs[] = $obj;
@@ -124,7 +125,7 @@ class Database
         if ($obj) {
             $mapping = $repo->getMapping();
             $row = array();
-            foreach($mapping as $key => $value) {
+            foreach ($mapping as $key => $value) {
                 $methodName = 'get' . ucfirst($key);
                 $columnName = $value;
                 $row[$columnName] = $obj->$methodName();

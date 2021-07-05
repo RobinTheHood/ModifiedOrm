@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm\Models\Base;
 
 use RobinTheHood\ModifiedOrm\Repositories\CategoryRepository;
@@ -30,7 +31,7 @@ class CategoryBase
 
     public function getImage()
     {
-      return $this->image;
+        return $this->image;
     }
 
     public function getParentId()
@@ -111,7 +112,7 @@ class CategoryBase
 
     public function setImage($image)
     {
-      $this->image = $image;
+        $this->image = $image;
     }
 
     public function setParentId($parentId)

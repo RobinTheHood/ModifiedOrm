@@ -1,4 +1,5 @@
 <?php
+
 namespace RobinTheHood\ModifiedOrm;
 
 define('_VALID_XTC', true);
@@ -48,7 +49,7 @@ Debug::out($productVpe);
 $productToCategorys = $product->getProductToCategorys();
 Debug::out($productToCategorys);
 
-foreach($productToCategorys as $productToCategory) {
+foreach ($productToCategorys as $productToCategory) {
     $category = $productToCategory->getCategory();
     Debug::out($category);
 
